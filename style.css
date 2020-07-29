@@ -1,0 +1,543 @@
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+*:not(i),
+*:not(i)::after,
+*:not(i)::before {
+  font-weight: 300;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: '.      .       .' '.      cal     .' '.      .       .';
+  -ms-grid-rows: auto max-content auto;
+      grid-template-rows: auto -webkit-max-content auto;
+      grid-template-rows: auto max-content auto;
+  -ms-grid-columns: auto max-content auto;
+      grid-template-columns: auto -webkit-max-content auto;
+      grid-template-columns: auto max-content auto;
+  grid-gap: 1rem;
+  padding: 0;
+  margin: 0;
+  background: #1f263b;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.container > .div {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: cal;
+  z-index: 2;
+  min-width: 300px;
+  min-height: 650px;
+  display: block;
+  position: relative;
+}
+
+.container > .div > .sideOption {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  position: absolute;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr auto;
+      grid-template-rows: 1fr auto;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  width: 120px;
+  grid-gap: 0;
+  max-height: 49%;
+  padding: 0 0.5rem;
+  background: #373735;
+  z-index: 1;
+  opacity: 1;
+}
+
+.container > .div > .sideOption.yearSelector {
+  top: 0;
+  left: -136px;
+}
+
+.container > .div > .sideOption.monthSelector {
+  top: 51%;
+  left: -136px;
+}
+
+.container > .div > .sideOption.hideSide {
+  left: 0 !important;
+  opacity: .1 !important;
+}
+
+.container > .div > .sideOption .title {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #c7c7c7;
+  height: 30px;
+  margin-bottom: 0.5rem;
+}
+
+.container > .div > .sideOption .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 266px;
+  margin-bottom: 0.5rem;
+  overflow: auto;
+}
+
+.container > .div > .sideOption .content:hover::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.container > .div > .sideOption .content .block {
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.container > .div > .sideOption .content .block:hover {
+  border: 2px solid #808080 !important;
+}
+
+.container > .div > .sideOption .content .block.currentView {
+  cursor: not-allowed;
+  border: 2px solid silver;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.container > .div > .sideOption .content .block.now {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+
+.container > .div .calender {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'time       time' 'ym         we' 'display    display' 'option     option';
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: max-content min-content auto max-content;
+      grid-template-rows: -webkit-max-content -webkit-min-content auto -webkit-max-content;
+      grid-template-rows: max-content min-content auto max-content;
+  grid-gap: 0.5rem;
+  padding: 1rem;
+  z-index: 3;
+  position: relative;
+  min-width: 300px;
+  min-height: 650px;
+  background: #373735;
+}
+
+.container > .div .settingBlock {
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: absolute;
+  width: auto;
+  padding: .5rem;
+  background: #373735;
+  opacity: 1;
+  z-index: 5;
+  bottom: 4rem;
+  right: -5rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content auto;
+      grid-template-columns: -webkit-max-content auto;
+      grid-template-columns: max-content auto;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  grid-gap: 0.5rem;
+}
+
+.container > .div .settingBlock .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  color: white;
+  line-height: 2rem;
+}
+
+.container > .div .settingBlock .switch-div {
+  display: block;
+  height: 1.2rem;
+  width: 2.5rem;
+  position: relative;
+  background: #272727;
+  border: 1px solid #808080;
+  border-radius: .5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  cursor: pointer;
+}
+
+.container > .div .settingBlock .switch-div::before {
+  content: "";
+  background: #c7c7c7;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0.1rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.container > .div .settingBlock .switch-div:hover {
+  background: #1d1d1d;
+}
+
+.container > .div .settingBlock .switch-div:hover::before {
+  background: white;
+}
+
+.container > .div .settingBlock .switch-div.activated {
+  background: #2d89ef !important;
+}
+
+.container > .div .settingBlock .switch-div.activated::before {
+  left: 1.3rem !important;
+}
+
+.container > .div .settingBlock.isHiding {
+  opacity: 0 !important;
+}
+
+.container > .div .settingBlock.hidden {
+  display: none !important;
+}
+
+.calender {
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.calender > .timeSection {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: time;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'time   when' 'full   full';
+  grid-gap: 0.5rem;
+  -ms-grid-columns: 170px auto;
+      grid-template-columns: 170px auto;
+  -ms-grid-rows: max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content;
+  width: 100%;
+  border-bottom: 1px solid #808080;
+  padding-bottom: 1rem;
+}
+
+.calender > .timeSection .hms {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: time;
+  font-size: 3rem;
+  line-height: 3rem;
+  color: white;
+  font-weight: 200;
+}
+
+.calender > .timeSection .pm-am {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: when;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  color: #c7c7c7;
+  font-weight: 200;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.calender > .timeSection .full {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: full;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #808080;
+  font-weight: 300;
+}
+
+.calender > .year-monthSection {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: ym;
+  color: #c7c7c7;
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.calender > .year-monthSection:hover {
+  color: white;
+}
+
+.calender > .weekSection {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: we;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 0.25rem 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.calender > .weekSection > div {
+  position: relative;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.calender > .weekSection > div i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #c7c7c7;
+  font-size: 1.5rem;
+}
+
+.calender > .weekSection > div i:hover {
+  color: white !important;
+}
+
+.calender > .hoverSection {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: display;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.calender > .hoverSection .trackCircle {
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-filter: blur(25px);
+          filter: blur(25px);
+  top: -100px;
+  left: -100px;
+  -webkit-transition: all !important;
+  transition: all !important;
+  background: white;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.902696) 0%, rgba(255, 255, 255, 0.101576) 100%);
+}
+
+.calender > .hoverSection > .main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (36px)[7];
+      grid-template-columns: repeat(7, 36px);
+  -ms-grid-rows: (36px)[7];
+      grid-template-rows: repeat(7, 36px);
+  grid-gap: 6px;
+  border-bottom: 1px solid #808080;
+  padding: 4px;
+}
+
+.calender > .hoverSection > .main > * {
+  width: 36px;
+  height: 36px;
+  background: #373735;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.calender > .hoverSection > .main > * > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+}
+
+.calender > .hoverSection > .main > *::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid #373735;
+}
+
+.calender > .hoverSection > .main > *::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+.calender > .hoverSection > .main > *.holiday {
+  background: #343434;
+}
+
+.calender > .hoverSection > .main > *.title {
+  cursor: default;
+}
+
+.calender > .hoverSection > .main > *.title::after {
+  border-color: #373735;
+}
+
+.calender > .hoverSection > .main > *:not(.title):hover::after {
+  border: 2px solid #9a9a9a;
+}
+
+.calender > .hoverSection > .main > *.notCurrent span {
+  color: #808080;
+}
+
+.calender > .hoverSection > .main > *.currentDay {
+  background: #252525 !important;
+}
+
+.calender > .option {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: option;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 3rem;
+  width: 100%;
+}
+
+.calender > .option .btn {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.calender > .option .btn:hover, .calender > .option .btn.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.calender > .option .btn i {
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+/*# sourceMappingURL=style.css.map */

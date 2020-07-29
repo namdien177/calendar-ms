@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calender</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+    <script src="TimeFunction.js"></script>
+    <script src="calendarJS.js"></script>
+</head>
+
+<body onload="loadCalender()">
+    <div class="container">
+        <div class="div">
+            <div class="calender">
+                <div class="timeSection">
+                    <div class="hms" id="currentTime">Time</div>
+                    <div class="pm-am" id="currentTimePMAM">
+                        PM/AM
+                    </div>
+                    <div class="full" id="currentTimeFull">
+                        FULL DATE
+                    </div>
+                </div>
+
+                <div class="year-monthSection" id="yearMonth">
+                    Month Year
+                </div>
+
+                <div class="weekSection">
+                    <div class="up" onclick="clickNextMonth()"><i class="fas fa-chevron-up"></i></div>
+                    <div class="down" onclick="clickPrevMonth()"><i class="fas fa-chevron-down"></i></div>
+                </div>
+
+                <div class="hoverSection" id="calenderBackground">
+                    <div class="trackCircle" id="lightEffect"></div>
+                    <div class="main" id="displayNode">
+                        <!--calender-->
+                    </div>
+                </div>
+
+                <div class="option">
+                    <div class="btn" id="buttonSetting" onclick="toggleMenu()">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="sideOption yearSelector hideSide" id="yearSelector">
+                <div class="title">Year</div>
+                <div class="content" id="selectorParent-year">
+                    <!--Choosing year-->
+                </div>
+            </div>
+            <div class="sideOption monthSelector hideSide" id="monthSelector">
+                <div class="title">Month</div>
+                <div class="content" id="selectorParent-month">
+                    <!--Choosing Month-->
+                </div>
+            </div>
+
+            <div class="settingBlock isHiding hidden" id="settingBlock">
+                <div class="text">Monday first week</div>
+                <div class="switch-div" id="switchMondayDOM" onclick="toggleViewMode()">
+                    <!--Toggle button-->
+                </div>
+                <div class="text">Holiday weekends</div>
+                <div class="switch-div" id="switchWeekendDOM" onclick="toggleWeekends()">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
